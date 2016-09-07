@@ -1,4 +1,6 @@
 from flask import Flask
+import requests
+import json
 
 app = Flask(__name__)
 
@@ -22,8 +24,18 @@ def save_page():
     vid = request.form.get("idea")
     
     retval =  "fullname=" + vfn + ";company=" + vco + ";email=" + vem + ";idea=" + vid
+    savedict = {"name":vfn,"company":vco,"email":vem,"idea":vid}
+    with open('data.txt', 'w') as outfile:
+        json.dump(savedict, outfile)
 
     return retval
+    
+@app.route("/view")
+def view_page():
+    with open('data.txt', 'r') as infile:
+        d = json.load(infile)
+
+    return d
 
 if __name__ == "__main__":
     app.run(debug=True,host='0.0.0.0')
