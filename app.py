@@ -42,7 +42,7 @@ def save_page():
     with open('data.json', 'w') as outfile:
         simplejson.dump(newlist,outfile)
 
-    return retval
+    return "Thank you for submitting your idea!"
     
 @app.route("/view")
 def view_page():
