@@ -18,10 +18,10 @@ def default_page():
 
 @app.route("/save")
 def save_page():
-    vfn = request.form.get("fullname")
-    vco = request.form.get("company")
-    vem = request.form.get("email")
-    vid = request.form.get("idea")
+    vfn = requests.form.get("fullname")
+    vco = requests.form.get("company")
+    vem = requests.form.get("email")
+    vid = requests.form.get("idea")
     
     retval =  "fullname=" + vfn + ";company=" + vco + ";email=" + vem + ";idea=" + vid
     savedict = {"name":vfn,"company":vco,"email":vem,"idea":vid}
